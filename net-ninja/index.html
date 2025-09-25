@@ -1,0 +1,23 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Vue</title>
+    <script src="https://unpkg.com/vue@3.0.2/dist/vue.global.js"></script>
+</head>
+<body>
+    <h1>Top Section, not controlled by Vue</h1>
+    <div id="app">
+        <h2 >{{ title }} - {{ author }} - {{ age }}</h2>
+        <!-- Vue directives with prefix v-* , inside double quotes is JS func will run on that event -->
+        <button v-on:click="age++">Increase age</button>
+        <!-- Shorthand for v-on is @, for any kind of events -->
+        <!-- Functions can also have parameters -->
+        <button @click="decreaseAge()">Decrease age</button>
+        <!-- Conditional rendering with v-if, v-else-if, v-else -->
+        <h2 v-if="age < 0">Age is negative</h2>
+    </div>
+    <h1>Bottom Section, not controlled by Vue</h1>
+    <script src="app.js"></script>
+</body>
+</html>
