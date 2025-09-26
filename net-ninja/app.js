@@ -12,11 +12,9 @@ const app = Vue.createApp({
             x: 0,
             y: 0,
             books: [
-                { title: "Book 1", author: "Author 1", img: "assets/1.png" },
-                { title: "Book 2", author: "Author 2", img: "assets/2.png" },
-                { title: "Book 3", author: "Author 3", img: "assets/3.png" },
-                { title: "Book 4", author: "Author 4", img: "assets/4.png" },
-                { title: "Book 5", author: "Author 5", img: "assets/5.png" }
+                { title: "Book 1", author: "Author 1", img: "assets/1.png", isFav: true },
+                { title: "Book 2", author: "Author 2", img: "assets/2.png", isFav: false },
+                { title: "Book 3", author: "Author 3", img: "assets/3.png", isFav: true },
             ],
             url: "https://example.com"
         }
@@ -38,6 +36,16 @@ const app = Vue.createApp({
             this.x = e.offsetX
             this.y = e.offsetY
             console.log(this.x, this.y)
+        },
+        toggleFav(book) {
+            book.isFav = !book.isFav
+        }
+    },
+
+    // computed properties
+    computed: { // define data inside components
+        filteredBooks() {
+            return this.books.filter((book) => {return book.isFav})
         }
     }
 })
