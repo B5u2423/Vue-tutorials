@@ -1,0 +1,105 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Vue</title>
+    <script src="https://unpkg.com/vue@3.0.2/dist/vue.global.js"></script>
+    <style>
+        .box {
+            padding: 100px 0;
+            width: 400px;
+            text-align: center;
+            background: #ddd;
+            margin: 20px;
+            display: inline-block;
+        }
+
+        body {
+            background: #eee;
+            max-width: 960px;
+            margin: 20px auto;
+        }
+
+        p, ul, h3 {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style-type: none;
+            background: #fff;
+            margin: 20px auto;
+            padding: 10px 20px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        li.fav {
+            background: #ff9ed2;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Top Section, not controlled by Vue</h1>
+    <div id="app">
+        <h1>Basics :: Apps and Directives</h1>
+        <h2 >{{ title }} - {{ author }} - {{ age }}</h2>
+        <!-- Vue directives with prefix v-* , inside double quotes is JS func will run on that event -->
+        <button v-on:click="age++">Increase age</button>
+        <!-- Shorthand for v-on is @, for any kind of events
+        Functions can also have parameters -->
+        <button @click="decreaseAge()">Decrease age</button>
+        <!-- Conditional rendering with v-if, v-else-if, v-else -->
+        <h2 v-if="age > 0">Age is positive w/ v-if</h2>
+        <h2 v-else>Age is negative or zero w/ v-else</h2>
+        <h2 v-show="age < 0">Age is negative w/ v-show</h2>
+        <!-- v-show vs v-if: v-show just toggles display CSS property, v-if adds/removes element from DOM
+        You can inspect the element in the dev tools to see the difference -->
+
+        <!-- Mouse events -->
+        <h1>Basics :: Mouse Events</h1>
+        <!-- Mouse event object will automatically be the first parameter of the event handler function 
+        If pass more than one argument, $event should be pass as the first argument-->
+        <div class="box" @mouseover="handleEvent($event, 5)">mouseover (enter)</div>
+        <div class="box" @mouseleave="handleEvent">mouseleave</div>
+        <div class="box" @dblclick="handleEvent">double click</div>
+        <div class="box" @mousemove="handleMousemove">position - {{x}}::{{y}}</div>
+
+        <h1>Basics :: Attribute Binding</h1>
+        <!-- Attribute binding with v-bind:*, shorthand is :* -->
+        <a :href="url">Bound URL</a>
+        <!-- v-for to display items from a list -->
+        <ul>
+            <li v-for="book in books">
+                <img :src="book.img" :alt="book.title">
+                <p>{{ book.title }} - {{ book.author }}</p>
+            </li>
+        </ul>
+
+        <h1>Basic :: Dynamic Classes</h1>
+        <!-- Conditionally assign classes to element-->
+        <ul>
+            <li v-for="book in books" :class="{ fav: book.isFav }" @click="toggleFav(book)">
+                <img :src="book.img" :alt="book.title">
+                <p>{{ book.title }}</p>
+                <h3>{{ book.author }}</h3>
+            </li>
+        </ul>
+        <!-- Computed properties -->
+        <h3>Books only visible if isFav value is true</h3>
+        <p>{{ filteredBooks}}</p>
+        <ul>
+            <li v-for="book in filteredBooks" :class="{ fav: book.isFav }" @click="toggleFav(book)">
+                <img :src="book.img" :alt="book.title">
+                <p>{{ book.title }}</p>
+                <h3>{{ book.author }}</h3>
+            </li>
+        </ul>
+    </div>
+    <h1>Bottom Section, not controlled by Vue</h1>
+    <script src="app.js"></script>
+</body>
+</html>
