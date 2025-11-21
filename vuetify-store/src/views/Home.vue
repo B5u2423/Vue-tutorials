@@ -1,3 +1,12 @@
-<script setup></script>
+<script setup>
+import { ref } from 'vue'
+import Header from '@/components/home/Header.vue'
+import Footer from '@/components/home/Footer.vue'
+import PopularProducts from '@/components/home/PopularProducts.vue'
+</script>
 
-<template>Home</template>
+<template>
+  <Header></Header>
+  <PopularProducts></PopularProducts>
+  <Footer></Footer>
+</template>
