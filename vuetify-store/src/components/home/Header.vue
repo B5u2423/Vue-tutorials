@@ -22,7 +22,7 @@ const sheetHeight = computed(() => {
 </script>
 
 <template>
-  <v-sheet :height="sheetHeight" class="justify-center align-center text-center d-flex">
+  <v-sheet :height="sheetHeight" class="bg-grey justify-center align-center text-center d-flex">
     <h1 class="text-center text-h3 d-none d-sm-block">Welcome to Awesome Shop!</h1>
     <h1 class="text-center text-h5 d-sm-none">Welcome to Awesome Shop!</h1>
   </v-sheet>
