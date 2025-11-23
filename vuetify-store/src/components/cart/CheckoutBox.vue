@@ -1,5 +1,8 @@
 <script setup>
 import { ref } from 'vue'
+import { useRouter } from 'vuetify/lib/composables/router'
+
+const router = useRouter()
 
 const checkoutForm = ref(null)
 const nameRules = ref([])
@@ -8,8 +11,7 @@ const name = ref('')
 const email = ref('')
 
 function goToCheckout() {
-  console.log('checked out')
-  // this.$router.push({ name: 'checkout' })
+  router.push({ name: 'checkout' })
 }
 </script>
 
