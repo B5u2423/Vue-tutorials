@@ -6,7 +6,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <v-card variant="outlined">
+  <v-card variant="outlined" elevation="4">
     <!-- `cover` prop to crop the image to fill the parent size -->
     <v-img cover :src="product.image" height="200px"> </v-img>
     <v-card-title>{{ product.name }}</v-card-title>

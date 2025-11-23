@@ -1,6 +1,6 @@
 <script setup>
 import TopNav from '@/components/TopNav.vue'
-import { useProductsStore } from './stores/ProductsStore';
+import { useProductsStore } from './stores/ProductsStore'
 
 const productsStore = useProductsStore()
 </script>
@@ -21,11 +21,7 @@ const productsStore = useProductsStore()
       :color="productsStore.snackbar.variant"
     >
       {{ productsStore.snackbar.message }}
-      <v-btn
-        dark
-        variant="text"
-        @click="productsStore.updateSnackBar({ show: false })"
-      >
+      <v-btn dark variant="text" @click="productsStore.updateSnackBar({ show: false })">
         Close
       </v-btn>
     </v-snackbar>
